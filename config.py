@@ -36,6 +36,16 @@ board_voltage_channel =  4  # Board voltage ~3.3V
 v_sensor_channel = 5        # 9V AC Voltage channel
 ct5_channel = 7             # 3.5mm Input #2        | Unused
 
+ct6_channel = 0             # Orange Pair           | House main (leg 1 - left)  (orange pair)
+ct7_channel = 1             # Green Pair            | House main (leg 2 - right) (green pair)
+ct8_channel = 2             # Blue Pair             | Subpanel main (leg 1 - top)
+ct9_channel = 3             # Brown Pair            | Solar Power 
+ct10_channel = 4             # 3.5mm Input #1        | Subpanel main (leg 2 - bottom)
+ct11_channel = 5             # Orange Pair           | House main (leg 1 - left)  (orange pair)
+ct12_channel = 6             # Green Pair            | House main (leg 2 - right) (green pair)
+ct13_channel = 7             # Blue Pair             | Subpanel main (leg 1 - top)
+
+
 # The values from running the software in "phase" mode should go below!
 ct_phase_correction = {
     'ct0' : 1,
@@ -44,6 +54,15 @@ ct_phase_correction = {
     'ct3' : 1,
     'ct4' : 1,
     'ct5' : 1,
+    
+    'ct6' : 1,
+    'ct7' : 1,
+    'ct8' : 1,
+    'ct9' : 1,
+    'ct10' : 1,
+    'ct11' : 1,
+    'ct12' : 1,
+    'ct13' : 1,
 }
 
 # AFTER phase correction is completed, these values are used in the final calibration for accuracy. See the documentation for more information.
@@ -54,5 +73,15 @@ accuracy_calibration = {
     'ct3' : 1,
     'ct4' : 1,
     'ct5' : 1,
+    
+    'ct6' : 1,
+    'ct7' : 1,
+    'ct8' : 1,
+    'ct9' : 1,
+    'ct10' : 1,
+    'ct11' : 1,
+    'ct12' : 1,
+    'ct13' : 1,
+    
     'AC'  : 1,
 }
