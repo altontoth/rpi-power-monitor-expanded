@@ -1,7 +1,7 @@
 # This module contains functions that are used in both the main power-monitor code and the calibration code.
 
 from datetime import datetime
-from config import ct_phase_correction, ct0_channel, ct1_channel, ct2_channel, ct3_channel, ct4_channel, board_voltage_channel, v_sensor_channel, ct5_channel, logger
+from config import ct_phase_correction, ct0_channel, ct1_channel, ct2_channel, ct3_channel, ct4_channel, board_voltage_channel, v_sensor_channel, ct6_channel, ct7_channel, ct8_channel, ct9_channel, ct10_channel, ct11_channel, ct12_channel, ct13_channel, logger
 import spidev
 import subprocess
 import docker
@@ -41,35 +41,33 @@ def collect_data(numSamples):
     ct2_data = []
     ct3_data = []
     ct4_data = []
-    ct5_data = []
-    v_data = []
-    
+    ct5_data = []   
+    ct6_data = []
+    ct7_data = []
     ct8_data = []
     ct9_data = []
     ct10_data = []
     ct11_data = []
     ct12_data = []
     ct13_data = []
-    ct14_data = []
-    ct15_data = []
+    v_data = []
 
     for _ in range(numSamples):
         ct0 = readadc_ce0(ct0_channel)
         ct4 = readadc_ce0(ct4_channel)
         ct1 = readadc_ce0(ct1_channel)
-        v = readadc_ce0(v_sensor_channel)
         ct2 = readadc_ce0(ct2_channel)
         ct3 = readadc_ce0(ct3_channel)
         ct5 = readadc_ce0(ct5_channel)
-        
+        v = readadc_ce0(v_sensor_channel)
+        ct6 = readadc_ce1(ct6_channel)
+        ct7 = readadc_ce1(ct7_channel)
         ct8 = readadc_ce1(ct8_channel)
         ct9 = readadc_ce1(ct9_channel)
         ct10 = readadc_ce1(ct10_channel)
         ct11 = readadc_ce1(ct11_channel)
         ct12 = readadc_ce1(ct12_channel)
         ct13 = readadc_ce1(ct13_channel)
-        ct14 = readadc_ce1(ct14_channel)
-        ct15 = readadc_ce1(ct15_channel)
         
         ct0_data.append(ct0)
         ct1_data.append(ct1)
@@ -77,17 +75,15 @@ def collect_data(numSamples):
         ct3_data.append(ct3)
         ct4_data.append(ct4)
         ct5_data.append(ct5)
-        
+        v_data.append(v)
+        ct6_data.append(ct6)
+        ct7_data.append(ct7)
         ct8_data.append(ct8)
         ct9_data.append(ct9)
         ct10_data.append(ct10)
         ct11_data.append(ct11)
         ct12_data.append(ct12)
-        ct13_data.append(ct13)
-        ct14_data.append(ct14)
-        ct15_data.append(ct15)
-        
-        v_data.append(v)    
+        ct13_data.append(ct13)            
     
     samples = {
         'ct0' : ct0_data,
@@ -96,14 +92,14 @@ def collect_data(numSamples):
         'ct3' : ct3_data,
         'ct4' : ct4_data,
         'ct5' : ct5_data,
+        'ct6' : ct6_data,
+        'ct7' : ct7_data,        
         'ct8' : ct8_data,
         'ct9' : ct9_data,
         'ct10' : ct10_data,
         'ct11' : ct11_data,
         'ct12' : ct12_data,
         'ct13' : ct13_data,
-        'ct14' : ct14_data,
-        'ct15' : ct15_data,
         'voltage' : v_data,
         'time' : now,
     }
