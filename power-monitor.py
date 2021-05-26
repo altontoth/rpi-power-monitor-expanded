@@ -16,7 +16,7 @@ import logging
 from config import logger, ct_phase_correction, ct0_channel, ct1_channel, ct2_channel, ct3_channel, ct4_channel, board_voltage_channel, v_sensor_channel, ct5_channel, ct6_channel, ct7_channel, ct8_channel, ct9_channel, ct10_channel, ct11_channel, ct12_channel, ct13_channel, GRID_VOLTAGE, AC_TRANSFORMER_OUTPUT_VOLTAGE, accuracy_calibration, db_settings
 from calibration import check_phasecal, rebuild_wave, find_phasecal
 from textwrap import dedent
-from common import collect_data, readadc, recover_influx_container
+from common import collect_data, readadc_ce0, readadc_ce1, recover_influx_container
 from shutil import copyfile
 
 
