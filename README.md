@@ -26,7 +26,7 @@ The code takes tens of thousands of samples per second, corrects for phase error
 
 ## Installation
 
-Follow David00's original instructions for setup of the expanded board (for now) revised hardware will be forthcoming.
+Follow David00's original instructions for setup of the expanded board (for now). Revised hardware will be forthcoming with the additional read channel.
 
 ### Please see the [project Wiki](https://github.com/David00/rpi-power-monitor/wiki#quick-start--table-of-contents) for detailed setup instructions.
 
@@ -42,17 +42,12 @@ Would you like to help out? Shoot an email at github@dalbrecht.tech to see what 
 ### Credits
 
 * [David00's Power Monitor](https://github.com/David00/rpi-power-monitor/) David is the original creator of this project.
-* 
+
 * [OpenEnergyMonitor](https://openenergymonitor.org) and forum member Robert.Wall for guidance and support
 
 * The `spidev` project on PyPi for providing the interface to read an analog to digital converter
 
 
 ---
-
-
-### Like my project? Donations are welcome!
-
-BTC:  
 
 ###### Last Updated:  May 25, 2021
