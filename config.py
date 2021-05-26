@@ -32,8 +32,6 @@ ct1_channel = 1             # Green Pair            | House main (leg 2 - right)
 ct2_channel = 2             # Blue Pair             | Subpanel main (leg 1 - top)
 ct3_channel = 3             # Brown Pair            | Solar Power 
 ct4_channel = 6             # 3.5mm Input #1        | Subpanel main (leg 2 - bottom)
-board_voltage_channel =  4  # Board voltage ~3.3V
-v_sensor_channel = 5        # 9V AC Voltage channel
 ct5_channel = 7             # 3.5mm Input #2        | Unused
 
 ct6_channel = 0             # Chip 2
@@ -44,6 +42,9 @@ ct10_channel = 4            # Chip 2
 ct11_channel = 5            # Chip 2
 ct12_channel = 6            # Chip 2
 ct13_channel = 7            # Chip 2
+
+board_voltage_channel =  4  # Board voltage ~3.3V
+v_sensor_channel = 5        # 9V AC Voltage channel
 
 # The values from running the software in "phase" mode should go below!
 ct_phase_correction = {
