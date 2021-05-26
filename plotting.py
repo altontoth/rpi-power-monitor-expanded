@@ -40,6 +40,14 @@ def plot_data(samples, title, *args, **kwargs):
         ct3 = samples['ct3']
         ct4 = samples['ct4']
         ct5 = samples['ct5']
+        ct6 = samples['ct6']
+        ct7 = samples['ct7']
+        ct8 = samples['ct8']
+        ct9 = samples['ct9']
+        ct10 = samples['ct10']
+        ct11 = samples['ct11']
+        ct12 = samples['ct12']
+        ct13 = samples['ct13']
         voltage = samples['voltage']
         x = [x for x in range(1, len(ct0))]
 
@@ -50,6 +58,14 @@ def plot_data(samples, title, *args, **kwargs):
         fig.add_trace(go.Scatter(x=x, y=ct3, mode='lines', name='CT3'), secondary_y=False)
         fig.add_trace(go.Scatter(x=x, y=ct4, mode='lines', name='CT4'), secondary_y=False)
         fig.add_trace(go.Scatter(x=x, y=ct5, mode='lines', name='CT5'), secondary_y=False)
+        fig.add_trace(go.Scatter(x=x, y=ct5, mode='lines', name='CT6'), secondary_y=False)
+        fig.add_trace(go.Scatter(x=x, y=ct5, mode='lines', name='CT7'), secondary_y=False)
+        fig.add_trace(go.Scatter(x=x, y=ct5, mode='lines', name='CT8'), secondary_y=False)
+        fig.add_trace(go.Scatter(x=x, y=ct5, mode='lines', name='CT9'), secondary_y=False)
+        fig.add_trace(go.Scatter(x=x, y=ct5, mode='lines', name='CT10'), secondary_y=False)
+        fig.add_trace(go.Scatter(x=x, y=ct5, mode='lines', name='CT11'), secondary_y=False)
+        fig.add_trace(go.Scatter(x=x, y=ct5, mode='lines', name='CT12'), secondary_y=False)
+        fig.add_trace(go.Scatter(x=x, y=ct5, mode='lines', name='CT13'), secondary_y=False)
         fig.add_trace(go.Scatter(x=x, y=voltage, mode='lines', name='AC Voltage'), secondary_y=True)
 
         if 'vWave_ct0' in samples.keys():
@@ -59,6 +75,14 @@ def plot_data(samples, title, *args, **kwargs):
             fig.add_trace(go.Scatter(x=x, y=samples['vWave_ct3'], mode='lines', name='New V wave (ct3)'), secondary_y=True)
             fig.add_trace(go.Scatter(x=x, y=samples['vWave_ct4'], mode='lines', name='New V wave (ct4)'), secondary_y=True)
             fig.add_trace(go.Scatter(x=x, y=samples['vWave_ct5'], mode='lines', name='New V wave (ct5)'), secondary_y=True)
+            fig.add_trace(go.Scatter(x=x, y=samples['vWave_ct5'], mode='lines', name='New V wave (ct6)'), secondary_y=True)
+            fig.add_trace(go.Scatter(x=x, y=samples['vWave_ct5'], mode='lines', name='New V wave (ct7)'), secondary_y=True)
+            fig.add_trace(go.Scatter(x=x, y=samples['vWave_ct5'], mode='lines', name='New V wave (ct8)'), secondary_y=True)
+            fig.add_trace(go.Scatter(x=x, y=samples['vWave_ct5'], mode='lines', name='New V wave (ct9)'), secondary_y=True)
+            fig.add_trace(go.Scatter(x=x, y=samples['vWave_ct5'], mode='lines', name='New V wave (ct10)'), secondary_y=True)
+            fig.add_trace(go.Scatter(x=x, y=samples['vWave_ct5'], mode='lines', name='New V wave (ct11)'), secondary_y=True)
+            fig.add_trace(go.Scatter(x=x, y=samples['vWave_ct5'], mode='lines', name='New V wave (ct12)'), secondary_y=True)
+            fig.add_trace(go.Scatter(x=x, y=samples['vWave_ct5'], mode='lines', name='New V wave (ct13)'), secondary_y=True)
 
 
     fig.update_layout(
