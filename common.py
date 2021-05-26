@@ -9,14 +9,25 @@ import sys
 from time import sleep
 from textwrap import dedent
 
-#Create SPI
-spi = spidev.SpiDev()
-spi.open(0, 0)
-spi.max_speed_hz = 1750000          # Changing this value will require you to adjust the phasecal values above.
+#Create SPI on Chip 1
+spi_ce0 = spidev.SpiDev()
+spi_ce0.open(0, 0)
+spi_ce0.max_speed_hz = 1750000          # Changing this value will require you to adjust the phasecal values above.
 
-def readadc(adcnum):
-    # read SPI data from the MCP3008, 8 channels in total
-    r = spi.xfer2([1, 8 + adcnum << 4, 0])
+#Create SPI on Chip 2
+spi_ce1 = spidev.SpiDev()
+spi_ce1.open(0, 1)
+spi_ce1.max_speed_hz = 1750000          # Changing this value will require you to adjust the phasecal values above.
+
+def readadc_ce0(adcnum):
+    # read SPI data from the first MCP3008, 8 channels in total
+    r = spi_ce0.xfer2([1, 8 + adcnum << 4, 0])
+    data = ((r[1] & 3) << 8) + r[2]
+    return data
+
+def readadc_ce1(adcnum):
+    # read SPI data from the second MCP3008, 8 channels in total
+    r = spi_ce1.xfer2([1, 8 + adcnum << 4, 0])
     data = ((r[1] & 3) << 8) + r[2]
     return data
 
@@ -32,21 +43,50 @@ def collect_data(numSamples):
     ct4_data = []
     ct5_data = []
     v_data = []
+    
+    ct8_data = []
+    ct9_data = []
+    ct10_data = []
+    ct11_data = []
+    ct12_data = []
+    ct13_data = []
+    ct14_data = []
+    ct15_data = []
 
     for _ in range(numSamples):
-        ct0 = readadc(ct0_channel)
-        ct4 = readadc(ct4_channel)
-        ct1 = readadc(ct1_channel)
-        v = readadc(v_sensor_channel)
-        ct2 = readadc(ct2_channel)
-        ct3 = readadc(ct3_channel)
-        ct5 = readadc(ct5_channel)
+        ct0 = readadc_ce0(ct0_channel)
+        ct4 = readadc_ce0(ct4_channel)
+        ct1 = readadc_ce0(ct1_channel)
+        v = readadc_ce0(v_sensor_channel)
+        ct2 = readadc_ce0(ct2_channel)
+        ct3 = readadc_ce0(ct3_channel)
+        ct5 = readadc_ce0(ct5_channel)
+        
+        ct8 = readadc_ce1(ct8_channel)
+        ct9 = readadc_ce1(ct9_channel)
+        ct10 = readadc_ce1(ct10_channel)
+        ct11 = readadc_ce1(ct11_channel)
+        ct12 = readadc_ce1(ct12_channel)
+        ct13 = readadc_ce1(ct13_channel)
+        ct14 = readadc_ce1(ct14_channel)
+        ct15 = readadc_ce1(ct15_channel)
+        
         ct0_data.append(ct0)
         ct1_data.append(ct1)
         ct2_data.append(ct2)
         ct3_data.append(ct3)
         ct4_data.append(ct4)
         ct5_data.append(ct5)
+        
+        ct8_data.append(ct8)
+        ct9_data.append(ct9)
+        ct10_data.append(ct10)
+        ct11_data.append(ct11)
+        ct12_data.append(ct12)
+        ct13_data.append(ct13)
+        ct14_data.append(ct14)
+        ct15_data.append(ct15)
+        
         v_data.append(v)    
     
     samples = {
@@ -56,6 +96,14 @@ def collect_data(numSamples):
         'ct3' : ct3_data,
         'ct4' : ct4_data,
         'ct5' : ct5_data,
+        'ct8' : ct8_data,
+        'ct9' : ct9_data,
+        'ct10' : ct10_data,
+        'ct11' : ct11_data,
+        'ct12' : ct12_data,
+        'ct13' : ct13_data,
+        'ct14' : ct14_data,
+        'ct15' : ct15_data,
         'voltage' : v_data,
         'time' : now,
     }
