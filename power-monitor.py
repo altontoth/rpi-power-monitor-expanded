@@ -858,6 +858,8 @@ def run_main():
             # solar_current = results['ct3']['current']
             # solar_pf = results['ct3']['pf']
             voltage = results['voltage']
+            if voltage < 50:        # Look for disconnected 9VAC adapter
+                voltage = 120       # Hardcode voltage value to continue data collection
 
             # Set solar power and current to zero if the solar power is under 20W.
             if solar_power < 20:
